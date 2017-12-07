@@ -35,6 +35,10 @@ IfUnauthenticated; Stop
 <% scope['ezproxy::admins'].each do |this_admin| -%>
 IfUser <%= this_admin %>; Admin
 <% end -%>
+<% if scope['ezproxy::ldap_append'] -%>
+<% scope['ezproxy::ldap_append'].each do |this_append| -%>
+<%= this_append %>
+<% end -%>
 <% end -%>
 /LDAP
 <% end -%>

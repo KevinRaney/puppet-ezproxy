@@ -36,6 +36,7 @@
 # @param ldap Boolean for whether or not to authenticate via LDAP.
 # @param ldap_options Array of LDAP options to include.
 # @param ldap_url LDAP URL to use to authenticate users.
+# @param ldap_append Array of LDAP options to be added to the end of the LDAP section.
 # @param cgi Boolean for whether or not to authenticate via CGI.
 # @param cgi_url CGI URL to use to authenticate users.
 # @param ticket_auth Boolean for whether or not to authenticate via ticket.
@@ -93,6 +94,7 @@ class ezproxy (
   Boolean                                        $ldap                     = false,
   Array                                          $ldap_options             = [],
   Optional[String]                               $ldap_url                 = undef,
+  Array                                          $ldap_append              = [],
   Boolean                                        $cgi                      = false,
   Optional[String]                               $cgi_url                  = undef,
   Boolean                                        $ticket_auth              = false,
