@@ -20,7 +20,7 @@
 # @param login_port Port to listen for HTTP.
 # @param ssl Boolean for whether or not to accept SSL connections.
 # @param ssl_key String that contains the SSL Key to use.
-# @param ssl_cert String that contains the SSL Certificate to use.
+# @param ssl_crt String that contains the SSL Certificate to use.
 # @param ssl_ca String that contains the SSL Certificate Authority Chain to use.
 # @param https_login Boolean for whether or not to force logins through SSL.
 # @param https_admin Boolean for whether or not to force admin sessions through SSL.
@@ -81,7 +81,7 @@ class ezproxy (
   String                                         $login_port               = '80',
   Boolean                                        $ssl                      = false,
   Optional[String]                               $ssl_key                  = undef,
-  Optional[String]                               $ssl_cert                 = undef,
+  Optional[String]                               $ssl_crt                  = undef,
   Optional[String]                               $ssl_ca                   = undef,
   Boolean                                        $https_login              = false,
   Boolean                                        $https_admin              = false,
