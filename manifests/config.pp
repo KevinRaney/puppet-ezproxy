@@ -94,7 +94,7 @@ class ezproxy::config {
     }
     file { "${::ezproxy::install_dir}/ssl/00000001.ca":
       ensure  => present,
-      content => ${::ezproxy::ssl_ca},
+      content => $::ezproxy::ssl_ca,
       owner   => $::ezproxy::user,
       group   => $::ezproxy::group,
       mode    => '0600',
