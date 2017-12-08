@@ -115,8 +115,8 @@ class ezproxy::config {
     }
   } else {
     file { "${::ezproxy::install_dir}/ssl":
-      path   => $title,
       ensure => absent,
+      recurse => true,
       force  => true,
     }
   }
