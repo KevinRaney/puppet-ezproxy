@@ -19,6 +19,9 @@
 # @param reject_ips Array of IPs to reject for the default group.
 # @param login_port Port to listen for HTTP.
 # @param ssl Boolean for whether or not to accept SSL connections.
+# @param ssl_key String that contains the SSL Key to use.
+# @param ssl_cert String that contains the SSL Certificate to use.
+# @param ssl_ca String that contains the SSL Certificate Authority Chain to use.
 # @param https_login Boolean for whether or not to force logins through SSL.
 # @param https_admin Boolean for whether or not to force admin sessions through SSL.
 # @param max_lifetime How long in minutes a session should remain valid after last access.
@@ -77,6 +80,9 @@ class ezproxy (
   Array                                          $reject_ips               = [],
   String                                         $login_port               = '80',
   Boolean                                        $ssl                      = false,
+  Optional[String]                               $ssl_key                  = undef,
+  Optional[String]                               $ssl_cert                 = undef,
+  Optional[String]                               $ssl_ca                   = undef,
   Boolean                                        $https_login              = false,
   Boolean                                        $https_admin              = false,
   String                                         $max_lifetime             = '120',

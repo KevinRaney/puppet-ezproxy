@@ -71,6 +71,54 @@ class ezproxy::config {
     group_order    => '999999',
   }
 
+  if $::ezproxy::ssl {
+    file { "${::ezproxy::install_dir}/ssl":
+      ensure => directory,
+      owner  => $::ezproxy::user,
+      group  => $::ezproxy::group,
+      mode    => '0700',
+    }
+    file { "${::ezproxy::install_dir}/ssl/00000001.key":
+      ensure  => present,
+      content => ${::ezproxy::ssl_key},
+      owner   => $::ezproxy::user,
+      group   => $::ezproxy::group,
+      mode    => '0600',
+    }
+    file { "${::ezproxy::install_dir}/ssl/00000001.crt":
+      ensure  => present,
+      content => ${::ezproxy::ssl_crt},
+      owner   => $::ezproxy::user,
+      group   => $::ezproxy::group,
+      mode    => '0600',
+    }
+    file { "${::ezproxy::install_dir}/ssl/00000001.ca":
+      ensure  => present,
+      content => ${::ezproxy::ssl_ca},
+      owner   => $::ezproxy::user,
+      group   => $::ezproxy::group,
+      mode    => '0600',
+    }
+    file { "${::ezproxy::install_dir}/ssl/00000001.cnf":
+      ensure  => present,
+      content => "### MANAGED BY PUPPET ###",
+      owner   => $::ezproxy::user,
+      group   => $::ezproxy::group,
+      mode    => '0600',
+    }
+    file { "${::ezproxy::install_dir}/ssl/active":
+      ensure  => present,
+      content => "1",
+      owner   => $::ezproxy::user,
+      group   => $::ezproxy::group,
+      mode    => '0600',
+    }
+  } else {
+    file { "${::ezproxy::install_dir}/ssl":
+      ensure => absent,
+    }
+  }
+
   if $::ezproxy::default_stanzas {
     ezproxy::stanza { 'Worldcat.org':
       urls      => [ 'http://worldcat.org' ],
