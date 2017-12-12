@@ -81,7 +81,7 @@ class ezproxy::config {
     file { "${::ezproxy::install_dir}/ssl/00000001.key":
       ensure  => present,
       content => $::ezproxy::ssl_key_content,
-      source  => $::ezproxy::ssl_key_source
+      source  => $::ezproxy::ssl_key_source,
       owner   => $::ezproxy::user,
       group   => $::ezproxy::group,
       mode    => '0600',
