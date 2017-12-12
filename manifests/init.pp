@@ -19,9 +19,12 @@
 # @param reject_ips Array of IPs to reject for the default group.
 # @param login_port Port to listen for HTTP.
 # @param ssl Boolean for whether or not to accept SSL connections.
-# @param ssl_key String that contains the SSL Key to use.
-# @param ssl_crt String that contains the SSL Certificate to use.
-# @param ssl_ca String that contains the SSL Certificate Authority Chain to use.
+# @param ssl_key_content String that contains the SSL Key to use (If provided, do not use set ssl_key_source).
+# @param ssl_key_source String that contains the path of the SSL Key to use (If provided, do not use set ssl_key_content).
+# @param ssl_crt_content String that contains the SSL Certificate to use (If provided, do not use set ssl_crt_source).
+# @param ssl_crt_source String that contains the path of the SSL Certificate to use (If provided, do not use set ssl_crt_content).
+# @param ssl_ca_content String that contains the SSL Certificate Authority Chain to use (If provided, do not use set ssl_ca_source).
+# @param ssl_ca_source String that contains the path of the SSL Certificate Authority Chain to use (If provided, do not use set ssl_ca_content).
 # @param https_login Boolean for whether or not to force logins through SSL.
 # @param https_admin Boolean for whether or not to force admin sessions through SSL.
 # @param max_lifetime How long in minutes a session should remain valid after last access.
@@ -80,9 +83,12 @@ class ezproxy (
   Array                                          $reject_ips               = [],
   String                                         $login_port               = '80',
   Boolean                                        $ssl                      = false,
-  Optional[String]                               $ssl_key                  = undef,
-  Optional[String]                               $ssl_crt                  = undef,
-  Optional[String]                               $ssl_ca                   = undef,
+  Optional[String]                               $ssl_key_content          = undef,
+  Optional[String]                               $ssl_key_source           = undef,
+  Optional[String]                               $ssl_crt_content          = undef,
+  Optional[String]                               $ssl_crt_source           = undef,
+  Optional[String]                               $ssl_ca_content           = undef,
+  Optional[String]                               $ssl_ca_source            = undef,
   Boolean                                        $https_login              = false,
   Boolean                                        $https_admin              = false,
   String                                         $max_lifetime             = '120',

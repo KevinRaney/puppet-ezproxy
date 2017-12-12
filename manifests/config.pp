@@ -80,21 +80,24 @@ class ezproxy::config {
     }
     file { "${::ezproxy::install_dir}/ssl/00000001.key":
       ensure  => present,
-      content => $::ezproxy::ssl_key,
+      content => $::ezproxy::ssl_key_content,
+      source  => $::ezproxy::ssl_key_source
       owner   => $::ezproxy::user,
       group   => $::ezproxy::group,
       mode    => '0600',
     }
     file { "${::ezproxy::install_dir}/ssl/00000001.crt":
       ensure  => present,
-      content => $::ezproxy::ssl_crt,
+      content => $::ezproxy::ssl_crt_content,
+      source  => $::ezproxy::ssl_crt_source,
       owner   => $::ezproxy::user,
       group   => $::ezproxy::group,
       mode    => '0600',
     }
     file { "${::ezproxy::install_dir}/ssl/00000001.ca":
       ensure  => present,
-      content => $::ezproxy::ssl_ca,
+      content => $::ezproxy::ssl_ca_content,
+      source  => $::ezproxy::ssl_ca_source,
       owner   => $::ezproxy::user,
       group   => $::ezproxy::group,
       mode    => '0600',
